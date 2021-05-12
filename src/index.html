@@ -4,38 +4,150 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #c1c6c3;
+  font-family: "Poppins", sans-serif;
+  background-color: #FF8066;
+  color: #fff;
+  line-height: 1.6;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  /*  CSS Smooth Scroll */
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  height: 60px;
+  background: rgba(0,0,0,0.7);
+}
+
+.navbar ul {
+  display: flex;
+  list-style: none;
+  width: 100%;
+  justify-content: center;
+}
+
+.navbar ul li {
+  margin: 0 1rem;
+  padding: 1rem;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #f4f4f4;
+}
+
+.navbar ul li a:hover {
+  color: skyblue;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+  scroll-snap-align: center;
+}
+
+section h1 {
+  font-size: 4rem;
+}
+
+section p {
+  font-size: 1.5rem;
+}
+
+ 
+/* ====== Section Images ====== */
+
+section#home {
+  background: url('https://images.pexels.com/photos/3178786/pexels-photo-3178786.jpeg?cs=srgb&dl=pexels-andrew-neel-3178786.jpg&fm=jpg') no-repeat center center/cover;
+}
+
+section#home h1 {
+  color: rgba(39, 15, 255, 0.927)
+}
+
+
+section#about {
+  background: url('https://images.pexels.com/photos/3876433/pexels-photo-3876433.jpeg?cs=srgb&dl=pexels-tomas-anunziata-3876433.jpg&fm=jpg') no-repeat center center/cover;
+}
+
+section#about h1 {
+  color: rgba(204, 18, 204, 0.927)
+}
+
+section#service {
+  background: url('https://images.pexels.com/photos/34883/pexels-photo.jpg?cs=srgb&dl=pexels-donald-tong-34883.jpg&fm=jpg') no-repeat center center/cover;
+}
+
+section#service h1 {
+  color: rgba(42, 240, 108, 0.927)
+}
+
+section#contact {
+  background: url('https://images.pexels.com/photos/2360424/pexels-photo-2360424.jpeg?cs=srgb&dl=pexels-lisa-2360424.jpg&fm=jpg') no-repeat center center/cover;
+}
+
+section#contact h1 {
+  color: rgba(252, 248, 10, 0.927)
+}
+  </style>
   <title>Smooth Scroll Page</title>
 </head>
 <body>
   <div class="container">
     <nav class="navbar">
       <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Service</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#service">Service</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
 
     <section id="home">
-      <h1>Welcome</h1>
+      <h1>Home</h1>
       <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet maxime accusantium, error exercitationem non ducimus officiis voluptate modi fugiat est.</p>
     </section>
 
     <section id="about">
-      <h1>Welcome</h1>
+      <h1>About</h1>
       <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet maxime accusantium, error exercitationem non ducimus
         officiis voluptate modi fugiat est.</p>
     </section>
 
     <section id="service">
-      <h1>Welcome</h1>
+      <h1>Service</h1>
       <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet maxime accusantium, error exercitationem non ducimus
         officiis voluptate modi fugiat est.</p>
     </section>
 
     <section id="contact">
-      <h1>Welcome</h1>
+      <h1>Contact</h1>
       <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet maxime accusantium, error exercitationem non ducimus
         officiis voluptate modi fugiat est.</p>
     </section>

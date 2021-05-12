@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: "Poppins",sans-serif;
+    }
+    .box1 {
+      height: 100vh;
+      background-color: lightblue;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .box2 {
+      height: 100vh;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+  </style>
+  <title>Smooth Scroll Page using Vanilla JS</title>
+</head>
+<body>
+    <div class="box1">
+      <a href="#" class="section1">Bring me down</a>
+    </div>
+    <div class="box2">
+      <a href="#" class="section2">Thanks</a>
+    </div>
+    <script>
+      function smoothScroll(target,duration){
+        var target = document.querySelector(target);
+        var targetPosition = target.getBoundingClientRect().top;
+        var startPosition = windows.pageYOffset;
+        var distance = targetPosition - startPosition;
+        var startTime = null;
+        // console.log(targetPosition);
+
+        function animation(currentTime){
+          if(startTime === null) startTime = currentTime;
+          var timeElapsed = currentTime - startTime;
+          var run = ease(timeElapsed, startPosition, distance, duration);
+          windows.scrollTo(0,run);
+          if(timeElapsed < duration) requestAnimationFrame(animation);
+        }
+
+        function ease(a,b,c,d){
+          t /= d / 2;
+          if(t < 1) return c / 2 * t * t + b;
+          t--;
+          return -c / 2 * (t * (t - 2) -1 ) + b;
+        }
+
+        requestAnimationFrame(animation);
+      }
+
+      var setion1 = document.querySelector('.section1');
+
+      section1.addEventListener('click', () => {
+        smoothScroll('.section2', 2000);
+      })
+
+      //get all the links on the page containing # in the href (^= means starting with)
+        const anchorLinks = document.querySelectorAll('a[href^="#"]');
+
+
+        anchorLinks.forEach((link) => {
+          // get the target element by getting the href value from each link
+          let scrollTarget = link.getAttribute('href');
+          // for clicking on any of the links
+          link.addEventListener('click', (e) => {
+            // we need to prevent default behaviour which would be just jumping to the element without scrolling
+            e.preventDefault();
+            // call your fancy animated scroll function
+            smoothScroll(scrollTarget, 1000);
+          })
+        });
+
+      // smoothScroll('.section2', 1000);
+    </script>
+</body>
+</html>

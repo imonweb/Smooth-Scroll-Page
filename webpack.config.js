@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -18,8 +19,14 @@ module.exports = {
         {
           test: /\.css$/i,
           use: ["style-loader","css-loader"],
+        },
+        {
+          test: /\.(png|svg|jpeg|jpg|gif|svg)$/i,
+          type: "asset/resource"
         }
       ]
-    }
+    },
+     devtool: 'inline-source-map',
+    
     
 } /*  module.exports end */
