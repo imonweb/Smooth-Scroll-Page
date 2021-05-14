@@ -23,7 +23,19 @@ module.exports = {
         {
           test: /\.(png|svg|jpeg|jpg|gif|svg)$/i,
           type: "asset/resource"
-        }
+        },
+        {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts/'
+            }
+          }
+        ]
+      }
       ]
     },
      devtool: 'inline-source-map',

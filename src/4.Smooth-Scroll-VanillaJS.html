@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+
+    /* not recommended due to lack of browser support */
+    /* html {
+      scroll-behavior: smooth;
+    } */
+    .navbar {
+      background-color: #000;
+      color: #fff;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      width: 100%;
+      height: 80px;
+      line-height: 80px;
+      font-size: 18px;
+      padding: 0 30px;
+      position: fixed;
+      top: 0;
+      z-index: 10;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .navbar a.navbar-brand {
+      float: left;
+      height: inherit;
+      line-height: inherit;
+      padding: 0 30px;
+      font-size: 22px;
+      text-transform: uppercase;
+      font-weight: 400;
+      color: #f6f6f6;
+      letter-spacing: 2px;
+      // background-color: #000;
+    }
+
+    .navbar a.navbar-brand span {
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .navbar ul {
+      float: right;
+      list-style: none;
+      height: inherit;
+      line-height: inherit;
+      padding: 0 50px;
+    }
+
+    .navbar ul li {
+      display: inline-block;
+    }
+
+    .navbar ul li a {
+      display: block;
+      text-align: center;
+      min-width: 120px;
+      padding: 0 30px;
+      // color:#fff;
+    }
+
+    .navbar ul li a:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .navbar .navbar-toggler {
+      display: none;
+    }
+
+    .intro {
+      width: 100%;
+      height: 100vh;
+      background: url("https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260") no-repeat center center;
+      background-size: cover;
+      background-color: #000;
+    }
+
+    .container {
+      position: relative;
+      height: 100vh;
+      color: #fff;
+    }
+
+    .container h2 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 20vh;
+    }
+
+    #html {
+      color: #e34f26;
+    }
+
+    #css {
+      color: #002561;
+    }
+
+    #javascript {
+      color: rgb(16, 247, 27);
+    }
+
+
+    /* ====== Media Queries ====== */
+
+    @media (max-width: 991px) {
+      .navbar {
+        padding: 0;
+
+      }
+
+      .navbar ul {
+        width: 100%;
+        padding: 0;
+        background-color: rgba(0, 0, 0, 0.9);
+        //  height: auto;
+        height: 100vh;
+        max-height: 0;
+        overflow: hidden;
+        transition: all ease-in-out 0.3s;
+      }
+
+      .navbar ul.open {
+        max-height: 100vh;
+      }
+
+      .navbar ul li {
+        width: 100%;
+        // border-bottom: 1px solid rgba(255,255,255,0.3);
+      }
+
+      .navbar ul li a {
+        padding: 0;
+
+      }
+
+      .navbar .navbar-toggler {
+        display: block;
+        position: absolute;
+        height: 40px;
+        top: 20px;
+        right: 20px;
+        background-color: transparent;
+        color: #fff;
+        border: 3px solid #fff;
+        // border: none;
+        outline: none;
+        padding: 0 5px;
+        cursor: pointer;
+      }
+
+      .navbar .navbar-toggler span,
+      .navbar .navbar-toggler span::before,
+      .navbar .navbar-toggler span::after {
+        display: block;
+        content: "";
+        background-color: #fff;
+        height: 3px;
+        width: 28px;
+        border-radius: 4px;
+        transition: all ease-in-out 0.3s;
+      }
+
+
+      .navbar .navbar-toggler span::before {
+        transform: translateY(-8px);
+      }
+
+      .navbar .navbar-toggler span::after {
+        transform: translateY(5px);
+      }
+
+      .navbar .navbar-toggler.open-navbar-toggler span {
+        //  transform: rotate(90deg);
+        background-color: transparent;
+        // transform: scale(0.85) rotate(270deg);
+      }
+
+      .navbar .navbar-toggler.open-navbar-toggler span::before {
+        transform: translateY(0px) rotate(45deg);
+        //  transform: translate(0px) scale(0.75) rotate(45deg);
+      }
+
+      .navbar .navbar-toggler.open-navbar-toggler span::after {
+        transform: translateY(-3px) rotate(-45deg);
+        //  transform: translateY(-3px) rotate(0.75) rotate(-45deg);
+      }
+
+
+    }
+
+    @media (max-width: 991px) {
+      .navbar ul {
+        padding: 0 10px;
+      }
+
+      .navbar ul li a {
+        padding: 0;
+      }
+    }
+
+
+    /* ====== OVERLAY color ====== */
+    .showcase__overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(238, 13, 69, 0.2);
+      mix-blend-mode: darken;
+    }
+  </style>
+  <title>Responsive Navbar with Smooth Scrolling Effects</title>
+</head>
+
+<body>
+  <!-- Coding Journey -->
+
+  <nav class="navbar">
+    <a href="#" class="navbar-brand"><span>W</span>eb<span>D</span>ev</a>
+    <ul>
+      <li><a href="#html">HTML</a></li>
+      <li><a href="#css">CSS</a></li>
+      <li><a href="#javascript">JavaScript</a></li>
+    </ul>
+    <button class="navbar-toggler open-navbar-toggler">
+      <!-- <button class="navbar-toggler"> -->
+      <span></span>
+    </button>
+  </nav>
+
+  <header class="intro"></header>
+
+  <div class="showcase__overlay"></div>
+
+  <section id="html" class="container">
+    <h2>
+      <i class="fab fa-html5"></i>
+    </h2>
+  </section>
+  <section id="css" class="container">
+    <h2>
+      <i class="fab fa-css3"></i>
+    </h2>
+  </section>
+  <section id="javascript" class="container">
+    <h2>
+      <i class="fab fa-js"></i>
+    </h2>
+  </section>
+
+
+
+
+  <script src="myBundle.js"></script>
+
+  <script>
+    const navbarToggler = document.querySelector('.navbar-toggler');
+    const navbarMenu = document.querySelector('.navbar ul');
+    const navbarLinks = document.querySelectorAll('.navbar a');
+
+    navbarToggler.addEventListener('click', navbarTogglerClick);
+
+    function navbarTogglerClick() {
+      navbarToggler.classList.toggle("open-navbar-toggler");
+      navbarMenu.classList.toggle("open");
+    }
+
+    navbarLinks.forEach(elem => elem.addEventListener('click', navbarLinkClick));
+
+    function navbarLinkClick(event) {
+
+      smoothScroll(event); 
+      if (navbarMenu.classList.contains("open")) {
+        navbarToggler.click();
+      }
+    }
+
+
+    // smooth scroll
+
+    // Approach no1 - window.scrollTo() (window.scroll())
+    function smoothScroll(event) {
+      // console.log(event.target);
+      // console.log(event.currentTarget);
+      const targetId = event.currentTarget.getAttribute("href");
+      console.log(targetId);
+    }
+     
+/* ====== Smooth Scroll ====== */
+  
+
+  // APPROACH #1 - window.scrollTo() (window.scroll())
+  // function smoothScroll(event) {
+  //   event.preventDefault();
+  //   const targetId = event.currentTarget.getAttribute("href");
+  //   window.scrollTo({
+  //     top: targetId==="#" ? 0 : document.querySelector(targetId).offsetTop,
+  //     behavior: "smooth"
+  //   });
+  // }
+
+  // APPROACH #2 - element.scrollIntoView()
+  // function smoothScroll(event) {
+  //   event.preventDefault();
+  //   const targetId = event.currentTarget.getAttribute("href")==="#" ? "header" : event.currentTarget.getAttribute("href");
+  //   document.querySelector(targetId).scrollIntoView({
+  //     behavior: "smooth",
+  //     block: "start"
+  //   });
+  // }
+
+  // APPROACH #3 - window.requestAnimationFrame()
+  function smoothScroll(event) {
+    event.preventDefault();
+    const targetId = event.currentTarget.getAttribute("href") === "#" ? "header" : event.currentTarget.getAttribute("href");
+    const targetPosition = document.querySelector(targetId).offsetTop;
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    const duration = 1000;
+    let start = null;
+
+    window.requestAnimationFrame(step);
+
+    function step(timestamp) {
+      if (!start) start = timestamp;
+      const progress = timestamp - start;
+      // window.scrollTo(0, distance*(progress/duration) + startPosition);
+      window.scrollTo(0, easeInOutCubic(progress, startPosition, distance, duration));
+      if (progress < duration) window.requestAnimationFrame(step);
+    }
+  }
+
+  // Easing Functions
+
+  function linear(t, b, c, d) {
+    return c * t / d + b;
+  };
+
+  function easeInOutQuad(t, b, c, d) {
+    t /= d / 2;
+    if (t < 1) return c / 2 * t * t + b;
+    t--;
+    return -c / 2 * (t * (t - 2) - 1) + b;
+  };
+
+  function easeInOutCubic(t, b, c, d) {
+    t /= d / 2;
+    if (t < 1) return c / 2 * t * t * t + b;
+    t -= 2;
+    return c / 2 * (t * t * t + 2) + b;
+  };
+
+ 
+  </script>
+
+</body>
+
+</html>
