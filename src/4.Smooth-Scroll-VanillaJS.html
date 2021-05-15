@@ -277,7 +277,13 @@
       navbarMenu.classList.toggle("open");
     }
 
+    /*  comment this line if using the IF statement for ie */
     navbarLinks.forEach(elem => elem.addEventListener('click', navbarLinkClick));
+
+    /*  For ie... */
+    // for(let i=0;  i < navbarLinks.length; i++ {
+    //   navbarLinks[i].addEventListener("click", navbarLinkClick);
+    // }
 
     function navbarLinkClick(event) {
 
@@ -336,6 +342,7 @@
     function step(timestamp) {
       if (!start) start = timestamp;
       const progress = timestamp - start;
+      // element.style.left = Math.min(progress / 10, 200) + 'px';
       // window.scrollTo(0, distance*(progress/duration) + startPosition);
       window.scrollTo(0, easeInOutCubic(progress, startPosition, distance, duration));
       if (progress < duration) window.requestAnimationFrame(step);
